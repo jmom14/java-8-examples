@@ -1,37 +1,27 @@
 package com.example.java8.stream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class StreamApp {
 	
-	private List<String> list;
-	private List<String> nums;
+	private List<String> list = Arrays.asList("Abecedario","Palabra","Cañon","Metodologia", "Cabernicola", "Computadora");
+	private List<String> nums = Arrays.asList("1","2","3");
 	
 	public static void main(String[] args) {
 		
 		StreamApp app = new StreamApp();
-		app.populateList();
+		//app.populateList();
 		//app.filter();
 		//app.sort();
 		//app.transform();
 		//app.limit();
-		System.out.println(app.count());
-	}
-	
-	public void populateList() {
-		list = new ArrayList<>();
-		list.add("Abecedario");
-		list.add("Palabra");
-		list.add("Cañon");
-		list.add("Metodo");
-		list.add("Cabernicola");
-		list.add("Computadora");
-		
-		nums = new ArrayList<>();
-		nums.add("1");	
-		nums.add("2");
-		nums.add("3");
+		//System.out.println(app.count());
+		app.testIntStream();
 	}
 	
 	public void filter() {
@@ -59,5 +49,14 @@ public class StreamApp {
 		return list.stream().count();
 	}
 	
-
+	public void testIntStream() {		
+		List<String> strings = Arrays.asList("smallq_","medium_", "large_");
+		strings.stream().map(x -> generate(x)).forEach(System.out::println);	
+	}
+	
+	public List<String> generate(String word){
+		return IntStream.range(1, 6)
+				.mapToObj( x ->  word.concat(String.valueOf(x)))
+				.collect(Collectors.toList());
+	}
 }
