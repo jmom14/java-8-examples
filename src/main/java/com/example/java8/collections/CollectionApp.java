@@ -15,7 +15,6 @@ public class CollectionApp {
 		app.populateList();
 		app.useRemoveIf();
 		app.useForEach();
-
 	}
 
 	public void populateList() {
@@ -27,8 +26,6 @@ public class CollectionApp {
 	}
 
 	public void useForEach() {
-
-		// list.forEach(x -> System.out.println(x));
 		list.forEach(System.out::println);
 	}
 
